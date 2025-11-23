@@ -54,7 +54,7 @@ VoltStellar democratizes access to EV charging infrastructure by creating a dece
 
 ```bash
 # Clone the repository
-git clone [<repository-url>](https://github.com/omefeye/bozokStellarBootcamp)
+git clone https://github.com/omefeye/bozokStellarBootcamp
 cd voltstellar
 
 # Navigate to frontend directory
