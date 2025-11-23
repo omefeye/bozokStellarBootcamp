@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "RWA Investor - Real World Asset Platform",
-  description: "Access tokenized real estate, commodities, and other physical assets through compliant blockchain technology on Stellar.",
+  title: "VoltStellar - EV Charging Network",
+  description: "Join the decentralized electric vehicle charging network. Find chargers near you or invest in charging infrastructure on the Stellar blockchain.",
 };
 
 export default function RootLayout({

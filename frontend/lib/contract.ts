@@ -1,5 +1,9 @@
 import { AssetMetadata, ComplianceData, ContractInfo } from './types';
 import { RWA_CONTRACT_ID, createSorobanServer, parseContractError } from './stellar';
+import { signTransaction } from '@stellar/freighter-api';
+
+// Destination wallet for investments
+const INVESTMENT_WALLET = 'GBC75SC4R3MN4Q4XDBATS53QAKFFTYEW7TBICZ7BM4XNY6ZJSP5FGMOC';
 
 // Contract method signatures
 export interface ContractMethods {
@@ -343,4 +347,116 @@ export const batchWhitelistAddresses = async (
   }
 
   return { success, failed };
+};
+
+// Investment function for charging station projects
+export const investInProject = async (
+  projectId: number,
+  investorAddress: string,
+  amount: number,
+  network: 'testnet' | 'mainnet' = 'testnet'
+): Promise<{ success: boolean; txHash?: string; error?: string }> => {
+  try {
+    console.log('Creating investment transaction:', {
+      projectId,
+      investorAddress,
+      amount,
+      network,
+      destination: INVESTMENT_WALLET
+    });
+
+    // Dynamically import Stellar SDK (only in browser)
+    const StellarSdk = await import('@stellar/stellar-sdk');
+    
+    // Create server instance
+    const server = new StellarSdk.Horizon.Server(
+      network === 'testnet' 
+        ? 'https://horizon-testnet.stellar.org'
+        : 'https://horizon.stellar.org'
+    );
+
+    // Load source account
+    const sourceAccount = await server.loadAccount(investorAddress);
+    
+    // Build transaction
+    const transaction = new StellarSdk.TransactionBuilder(sourceAccount, {
+      fee: StellarSdk.BASE_FEE,
+      networkPassphrase: network === 'testnet' 
+        ? StellarSdk.Networks.TESTNET 
+        : StellarSdk.Networks.PUBLIC
+    })
+      .addOperation(
+        StellarSdk.Operation.payment({
+          destination: INVESTMENT_WALLET,
+          asset: StellarSdk.Asset.native(), // XLM
+          amount: amount.toString()
+        })
+      )
+      .addMemo(StellarSdk.Memo.text(`VoltStellar Project ${projectId}`))
+      .setTimeout(180)
+      .build();
+
+    // Get XDR for Freighter to sign
+    const xdr = transaction.toXDR();
+    
+    // Sign with Freighter
+    const signResult = await signTransaction(xdr, {
+      networkPassphrase: network === 'testnet' 
+        ? StellarSdk.Networks.TESTNET 
+        : StellarSdk.Networks.PUBLIC
+    });
+
+    // Check if signing was successful
+    if ('error' in signResult) {
+      throw new Error(signResult.error || 'Transaction signing failed');
+    }
+
+    // Submit transaction
+    const signedTransaction = StellarSdk.TransactionBuilder.fromXDR(
+      signResult.signedTxXdr,
+      network === 'testnet' 
+        ? StellarSdk.Networks.TESTNET 
+        : StellarSdk.Networks.PUBLIC
+    );
+    
+    const result = await server.submitTransaction(signedTransaction);
+    
+    console.log('Transaction successful:', result);
+    
+    return {
+      success: true,
+      txHash: result.hash
+    };
+  } catch (error: any) {
+    console.error('Investment transaction failed:', error);
+    return {
+      success: false,
+      error: error.message || parseContractError(error)
+    };
+  }
+};
+
+// Get investment details for a user
+export const getUserInvestments = async (
+  userAddress: string,
+  network: 'testnet' | 'mainnet' = 'testnet'
+): Promise<Array<{
+  projectId: number;
+  projectName: string;
+  investedAmount: number;
+  tokenBalance: number;
+  currentValue: number;
+  returns: number;
+}>> => {
+  // Mock implementation - would query actual contract state
+  return [
+    {
+      projectId: 1,
+      projectName: 'Downtown Supercharger #4',
+      investedAmount: 500,
+      tokenBalance: 500,
+      currentValue: 525,
+      returns: 25
+    }
+  ];
 }; 

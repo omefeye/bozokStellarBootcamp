@@ -1,0 +1,9 @@
+{
+  "name": "VoltStellar Token",
+  "symbol": "VOLT",
+  "description": "EV Charging Infrastructure Token - Powering the future of electric vehicle charging",
+  "asset_type": "infrastructure",
+  "legal_doc_hash": "QmX123abcVoltStellarLegalDocHash",
+  "valuation": "5000000",
+  "last_valuation_date": {"u64": 1732320000}
+}

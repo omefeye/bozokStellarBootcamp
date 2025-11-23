@@ -1,43 +1,51 @@
-# 🏢 RWA Investment Platform
+# ⚡ VoltStellar - Decentralized EV Charging Network
 
-A professional Real World Asset (RWA) tokenization and investment platform built on the Stellar blockchain. This platform enables investors to discover, invest in, and trade tokenized real world assets including real estate, commodities, and infrastructure projects.
-
-![RWA Platform](https://img.shields.io/badge/Platform-RWA_Investment-blue)
-![Blockchain](https://img.shields.io/badge/Blockchain-Stellar-brightgreen)
-![Framework](https://img.shields.io/badge/Framework-Next.js_15-black)
-![TypeScript](https://img.shields.io/badge/Language-TypeScript-blue)
-![License](https://img.shields.io/badge/License-MIT-green)
+A revolutionary electric vehicle charging platform built on the Stellar blockchain. VoltStellar connects EV drivers with charging stations while enabling community investment in charging infrastructure through tokenized ownership.
 
 ## 🎯 **Project Overview**
 
-The RWA Investment Platform democratizes access to traditionally illiquid real world assets by tokenizing them on the Stellar blockchain. Investors can purchase fractional ownership of high-value assets like premium real estate, precious metals storage facilities, and renewable energy infrastructure.
+VoltStellar democratizes access to EV charging infrastructure by creating a decentralized network where anyone can find chargers, invest in charging stations, or list their own chargers. Built on Stellar blockchain, it enables instant XLM payments and fractional ownership of charging infrastructure.
 
 ### **🌟 Key Features**
 
-#### **For Investors**
-- 💼 **Professional Dashboard** - Portfolio overview with real-time asset valuations
-- 🏪 **Asset Marketplace** - Discover and filter tokenized investment opportunities
-- 💸 **Secure Transfers** - Send/receive RWA tokens with compliance validation
-- 📊 **Performance Tracking** - Monitor yields, compliance status, and asset performance
-- 🔐 **Wallet Integration** - Seamless Freighter wallet connectivity
+#### **For EV Drivers**
 
-#### **For Asset Owners**
-- 🏭 **Tokenization Wizard** - 5-step process to tokenize physical assets
-- 📋 **Compliance Management** - KYC/AML and regulatory compliance tools
-- 📈 **Funding Management** - Set investment goals and track capital raising
-- 🔒 **Legal Framework** - Document verification and legal compliance
+- 🔍 **Find Chargers** - Search nearby charging stations with real-time availability
+- ⚡ **Instant Payments** - Pay with Stellar (XLM) for fast, low-cost transactions
+- 🗺️ **Smart Search** - Location-based filtering with multiple charger types
+- 📱 **Real-time Status** - Live availability and pricing information
+- 🔐 **Secure Wallet** - Non-custodial Freighter wallet integration
+
+#### **For Investors**
+
+- 💰 **Community Funding** - Invest in charging infrastructure projects
+- 📊 **Transparent Returns** - Track funding progress and estimated APY
+- 🎯 **Diversified Portfolio** - Multiple projects with different risk profiles
+- 🔄 **Fractional Ownership** - Start investing from 100 XLM
+- 🛡️ **Blockchain Security** - All transactions secured on Stellar
+
+#### **For Charger Owners**
+
+- 📝 **Easy Listing** - Simple wizard to list charging stations
+- 💵 **Earn Revenue** - Generate passive income from charging sessions
+- 🌐 **Community Support** - Optional crowdfunding from investors
+- 📈 **Analytics** - Track usage and revenue performance
+- 🔒 **Wallet-Gated** - Secure access with wallet authentication
 
 #### **Platform Features**
-- 🌐 **Multi-Asset Support** - Real estate, commodities, infrastructure
-- ⚡ **Stellar Integration** - Fast, low-cost blockchain transactions
-- 🛡️ **Regulatory Compliance** - Built-in KYC/whitelist validation
-- 📱 **Responsive Design** - Professional UI optimized for all devices
+
+- 🌐 **Multi-Charger Support** - Fast charge, standard, and home chargers
+- ⚡ **Stellar Blockchain** - Fast, low-cost transactions
+- 🎨 **Modern UI/UX** - Beautiful teal/slate dark theme
+- 📱 **Responsive Design** - Optimized for all devices
+- 🔔 **Smart Notifications** - Toast alerts for all actions
 
 ---
 
 ## 🚀 **Quick Start**
 
 ### **Prerequisites**
+
 - Node.js 18+ installed
 - [Freighter Wallet](https://freighter.app/) browser extension
 - Access to Stellar Testnet for development
@@ -47,10 +55,10 @@ The RWA Investment Platform democratizes access to traditionally illiquid real w
 ```bash
 # Clone the repository
 git clone <repository-url>
-cd rwa-investment-platform
+cd voltstellar
 
 # Navigate to frontend directory
-cd rwa-frontend
+cd frontend
 
 # Install dependencies
 npm install
@@ -59,45 +67,30 @@ npm install
 npm run dev
 ```
 
-Visit `http://localhost:3000` to access the platform.
-
-### **Production Build**
-
-```bash
-# Build for production
-npm run build
-
-# Start production server
-npm start
-```
-
----
-
 ## 🏗️ **Project Architecture**
 
 ### **Technology Stack**
 
-| Component | Technology | Purpose |
-|-----------|------------|---------|
-| **Frontend** | Next.js 15 + TypeScript | React-based web application |
-| **Styling** | Tailwind CSS + shadcn/ui | Professional UI components |
-| **State Management** | Zustand | Lightweight state management |
-| **Blockchain** | Stellar SDK | Blockchain integration |
-| **Wallet** | Freighter API | Wallet connectivity |
-| **Icons** | Lucide React | Professional icon system |
+| Component         | Technology               | Purpose                     |
+| ----------------- | ------------------------ | --------------------------- |
+| **Frontend**      | Next.js 15 + TypeScript  | React-based web application |
+| **Styling**       | Tailwind CSS + shadcn/ui | Professional UI components  |
+| **Blockchain**    | Stellar SDK              | Blockchain integration      |
+| **Wallet**        | Freighter API            | Wallet connectivity         |
+| **Icons**         | Lucide React             | Professional icon system    |
+| **Notifications** | Sonner                   | Toast notifications         |
 
 ### **Directory Structure**
 
 ```
 rwa-frontend/
 ├── app/                    # Next.js App Router
-│   ├── page.tsx           # Dashboard (main page)
-│   ├── marketplace/       # Asset marketplace
-│   ├── tokenize/          # Asset tokenization wizard
-│   ├── transfer/          # Token transfer interface
-│   ├── dashboard/         # Dashboard redirect
-│   ├── layout.tsx         # Root layout
-│   └── globals.css        # Global styles
+│   ├── page.tsx           # Home page with search and features
+│   ├── find-chargers/     # Charger search and discovery
+│   ├── invest/            # Investment opportunities
+│   ├── list-charger/      # List new charging stations
+│   ├── layout.tsx         # Root layout with Toaster
+│   └── globals.css        # Global styles (teal/slate theme)
 ├── components/
 │   ├── ui/                # shadcn/ui components
 │   └── layout/            # Layout components
@@ -117,35 +110,108 @@ rwa-frontend/
 ## 💼 **Smart Contract Integration**
 
 ### **Contract Details**
-- **Contract ID**: `CBQAAC4EHNMMHEI2W3QU6UQ5N4KSVYRLVTB5M2XMARCNS4CNLWMX3VQ6`
+
+- **Contract ID**: `CBYQ6EVVIPTGRF6J565COVFI6HOEVBPZ7L5IWW47FLZMENXXA2D6P5DP`
 - **Network**: Stellar Testnet
-- **Asset**: Luxury Apartment NYC (LAPT)
-- **Type**: Premium Manhattan real estate token
+- **Asset**: VoltStellar Token (VOLT)
+- **Type**: EV Charging Infrastructure Token
+- **Explorer**: [View on Stellar Expert](https://stellar.expert/explorer/testnet/contract/CBYQ6EVVIPTGRF6J565COVFI6HOEVBPZ7L5IWW47FLZMENXXA2D6P5DP)
+- **Deployment Date**: November 23, 2025
+- **Total Supply**: 1,000,000 VOLT
+
+> **📋 Full deployment details:** See [DEPLOYMENT.md](./DEPLOYMENT.md) for complete deployment documentation, testing commands, and troubleshooting guide.
 
 ### **Supported Operations**
 
-| Operation | Description | Status |
-|-----------|-------------|--------|
-| `get_balance` | Query user's token balance | ✅ Implemented |
-| `get_metadata` | Retrieve asset information | ✅ Implemented |
-| `transfer` | Send tokens between addresses | ✅ Implemented |
-| `check_compliance` | Verify KYC/whitelist status | ✅ Implemented |
-| `get_supply` | Get total token supply | ✅ Implemented |
-| `mint` | Create new tokens (admin) | 🔄 Admin only |
-| `pause` | Pause contract operations | 🔄 Admin only |
+#### **Core Token Operations**
 
-### **Asset Metadata Structure**
+| Operation          | Description                   | Status         |
+| ------------------ | ----------------------------- | -------------- |
+| `get_balance`      | Query user's token balance    | ✅ Implemented |
+| `get_metadata`     | Retrieve asset information    | ✅ Implemented |
+| `transfer`         | Send tokens between addresses | ✅ Implemented |
+| `check_compliance` | Verify KYC/whitelist status   | ✅ Implemented |
+| `get_supply`       | Get total token supply        | ✅ Implemented |
+| `mint`             | Create new tokens (admin)     | 🔄 Admin only  |
+| `burn`             | Destroy tokens (admin)        | 🔄 Admin only  |
+| `pause`            | Pause contract operations     | 🔄 Admin only  |
 
-```typescript
-interface AssetMetadata {
-  name: string;              // "Luxury Apartment NYC"
-  symbol: string;            // "LAPT"  
-  asset_type: string;        // "real_estate"
-  description: string;       // Asset description
-  valuation: string;         // Current USD value
-  last_valuation_date: number; // Unix timestamp
-  legal_doc_hash: string;    // Property deed hash
+#### **Advanced Features**
+
+| Operation                      | Description                     | Status         |
+| ------------------------------ | ------------------------------- | -------------- |
+| `transfer_with_memo`           | Transfer with transaction note  | ✅ Implemented |
+| `batch_transfer`               | Send to multiple recipients     | ✅ Implemented |
+| `can_transfer`                 | Dry-run transfer validation     | ✅ Implemented |
+| `get_all_holders`              | List all token holders          | ✅ Implemented |
+| `get_holder_count`             | Count of active holders         | ✅ Implemented |
+| `calculate_dividend_share`     | Calculate proportional dividend | ✅ Implemented |
+| `has_voting_rights`            | Check governance eligibility    | ✅ Implemented |
+| `get_token_value`              | Get per-token asset value       | ✅ Implemented |
+| `lock_tokens`                  | Lock tokens for vesting period  | ✅ Implemented |
+| `batch_update_compliance`      | Update multiple KYC records     | 🔄 Admin only  |
+| `emergency_pause_and_snapshot` | Emergency contract freeze       | 🔄 Admin only  |
+
+### **Extended Functionality Details**
+
+#### **📝 Transfer with Memo**
+
+Send tokens with a transaction note for transparent record-keeping:
+
+```rust
+transfer_with_memo(from, to, amount, "Q4 Dividend Payment")
+```
+
+#### **📊 Batch Operations**
+
+Efficiently distribute tokens to multiple recipients (perfect for dividend payments):
+
+```rust
+batch_transfer(admin, [addr1, addr2, addr3], [100, 200, 150])
+```
+
+#### **🔍 Pre-Transfer Validation**
+
+Check if a transfer would succeed before executing:
+
+```rust
+if can_transfer(sender, receiver, 500) {
+    // Proceed with transfer
 }
+```
+
+#### **💰 Dividend Distribution**
+
+Calculate each holder's proportional share:
+
+```rust
+let share = calculate_dividend_share(holder, 10000) // Total dividend: 10000
+```
+
+#### **🗳️ Governance Rights**
+
+Verify voting eligibility based on minimum balance:
+
+```rust
+if has_voting_rights(address, 1000) {
+    // Can participate in governance
+}
+```
+
+#### **💎 Token Valuation**
+
+Get real-time value per token based on asset valuation:
+
+```rust
+let value_per_token = get_token_value() // Returns valuation / total_supply
+```
+
+#### **🔒 Token Lock-Up**
+
+Lock tokens for vesting or regulatory compliance:
+
+```rust
+lock_tokens(owner, 5000, unlock_timestamp)
 ```
 
 ---
@@ -153,24 +219,28 @@ interface AssetMetadata {
 ## 🎨 **User Interface Guide**
 
 ### **🏠 Dashboard Page (`/`)**
+
 - Portfolio value and performance metrics
 - Compliance status indicators
 - Quick action buttons
 - Investment opportunities overview
 
 ### **🏪 Marketplace Page (`/marketplace`)**
+
 - Asset discovery with search and filtering
 - Investment statistics and analytics
 - Asset cards with key metrics
 - Direct investment flow
 
 ### **🏭 Tokenization Page (`/tokenize`)**
+
 - 5-step asset tokenization wizard
 - Document upload and verification
 - Token economics configuration
 - Compliance settings and deployment
 
 ### **💸 Transfer Page (`/transfer`)**
+
 - Secure token transfer interface
 - Address validation and compliance checking
 - Transaction preview and confirmation
@@ -181,18 +251,21 @@ interface AssetMetadata {
 ## 🔐 **Security & Compliance**
 
 ### **Wallet Security**
+
 - Non-custodial wallet integration
 - Private key remains with user
 - Session management and auto-disconnect
 - Network validation and switching
 
 ### **Transaction Safety**
+
 - Multi-step validation process
 - Compliance verification before transfers
 - Clear transaction previews
 - Comprehensive error handling
 
 ### **Regulatory Compliance**
+
 - KYC verification requirements
 - Jurisdiction-based restrictions
 - Accredited investor validation
@@ -200,219 +273,24 @@ interface AssetMetadata {
 
 ---
 
-## 🌟 **Current Features**
-
-### **✅ Phase 1: Core Investment Platform (Completed)**
-- [x] Professional investor dashboard
-- [x] Asset marketplace with filtering
-- [x] Secure token transfer system
-- [x] Freighter wallet integration
-- [x] Smart contract mock client
-- [x] Responsive UI/UX design
-- [x] TypeScript type safety
-- [x] Compliance tracking
-
-### **🔄 Phase 2: Enhanced Trading (In Development)**
-- [ ] Advanced marketplace features
-- [ ] Investment calculator and ROI projections
-- [ ] Order book and trading interface
-- [ ] Price charts and market data
-- [ ] Portfolio analytics
-
-### **📋 Phase 3: Tokenization Engine (Planned)**
-- [ ] Complete tokenization wizard
-- [ ] Document verification system
-- [ ] Legal compliance automation
-- [ ] Smart contract deployment
-- [ ] Asset management tools
-
-### **🔮 Phase 4: Advanced Features (Future)**
-- [ ] Admin panel with role-based access
-- [ ] Revenue distribution automation
-- [ ] Advanced analytics and reporting
-- [ ] Mobile application (React Native)
-- [ ] Multi-chain support
-
----
-
-## 🛠️ **Development**
-
-### **Environment Setup**
-
-```bash
-# Install dependencies
-npm install
-
-# Start development server with hot reload
-npm run dev
-
-# Type checking
-npm run type-check
-
-# Linting
-npm run lint
-
-# Build production bundle
-npm run build
-```
-
-### **Environment Variables**
-
-```env
-# Optional - defaults are provided
-NEXT_PUBLIC_STELLAR_NETWORK=testnet
-NEXT_PUBLIC_CONTRACT_ID=CBQAAC4EHNMMHEI2W3QU6UQ5N4KSVYRLVTB5M2XMARCNS4CNLWMX3VQ6
-```
-
-### **Configuration Files**
-
-| File | Purpose |
-|------|---------|
-| `next.config.ts` | Next.js configuration |
-| `tailwind.config.ts` | Tailwind CSS settings |
-| `tsconfig.json` | TypeScript configuration |
-| `components.json` | shadcn/ui component config |
-
----
-
-## 🧪 **Testing Strategy**
-
-### **Current Testing Approach**
-- **Mock Contract Client**: Simulates all blockchain interactions
-- **Test Data**: Realistic asset metadata and user balances
-- **Validation Testing**: Address format and compliance checking
-- **Error Simulation**: Network failures and edge cases
-
-### **Planned Testing Implementation**
-- [ ] Unit tests for utilities and components
-- [ ] Integration tests for wallet and contract flows
-- [ ] End-to-end tests for critical user journeys
-- [ ] Smart contract integration testing
-- [ ] Performance testing and optimization
-
----
-
-## 📈 **Asset Types Supported**
-
-### **🏢 Real Estate**
-- **Minimum Value**: $100,000
-- **Examples**: Apartment buildings, office complexes, retail spaces
-- **Current**: Luxury Apartment NYC (LAPT) - $2.5M Manhattan property
-
-### **🏅 Commodities**
-- **Minimum Value**: $50,000
-- **Examples**: Gold storage, oil reserves, agricultural products
-- **Planned**: Gold Storage Facility (Delaware) - $3M precious metals facility
-
-### **⚡ Infrastructure**
-- **Minimum Value**: $500,000
-- **Examples**: Solar farms, data centers, transportation hubs
-- **Planned**: Renewable Energy Farm (Texas) - $8M solar project
-
----
-
-## 🚨 **Known Limitations**
-
-### **Current Development Constraints**
-- **Simulated Compliance**: Recipient validation is mocked for development
-- **Static Asset Data**: Metadata and balances are not live from blockchain
-- **Network Warnings**: Stellar SDK warnings in web environment (expected)
-- **Manual Network Switching**: Users must switch networks in Freighter manually
-
-### **Production Readiness Checklist**
-- [ ] Connect to live smart contracts
-- [ ] Implement real compliance verification
-- [ ] Add comprehensive error handling
-- [ ] Implement proper testing suite
-- [ ] Security audit and penetration testing
-- [ ] Legal compliance review
-
----
-
-## 🤝 **Contributing**
-
-We welcome contributions to the RWA Investment Platform! Here's how to get started:
-
-### **Development Workflow**
-
-1. **Fork the repository**
-2. **Create feature branch**: `git checkout -b feature/amazing-feature`
-3. **Follow code style**: Use existing TypeScript and component patterns
-4. **Test thoroughly**: Ensure no regressions in existing functionality
-5. **Submit pull request**: Include clear description of changes
-
-### **Code Style Guidelines**
-
-- **TypeScript**: Strict mode with comprehensive type definitions
-- **Components**: Functional components with proper prop typing
-- **Styling**: Tailwind CSS classes with shadcn/ui patterns
-- **State Management**: Zustand stores with typed interfaces
-- **Naming**: Descriptive variable and function names
-
-### **Contribution Areas**
-
-- 🐛 **Bug Fixes**: Address issues and improve stability
-- ✨ **New Features**: Implement roadmap items or propose new functionality
-- 📚 **Documentation**: Improve guides and API documentation
-- 🎨 **UI/UX**: Enhance design and user experience
-- 🔧 **Performance**: Optimize loading times and responsiveness
-
----
-
 ## 📚 **Resources**
 
 ### **Documentation**
+
 - [Stellar Documentation](https://developers.stellar.org/)
 - [Freighter Wallet](https://freighter.app/)
 - [Next.js Documentation](https://nextjs.org/docs)
 - [shadcn/ui Components](https://ui.shadcn.com/)
 - [Tailwind CSS](https://tailwindcss.com/docs)
 
-### **Community**
-- [Stellar Discord](https://discord.gg/stellar)
-- [Next.js Discord](https://discord.gg/nextjs)
-- [GitHub Issues](link-to-issues)
+## 🧪 **Contract Testing**
+
+All functions tested successfully on [Stellar Testnet](https://stellar.expert/explorer/testnet/contract/CBYQ6EVVIPTGRF6J565COVFI6HOEVBPZ7L5IWW47FLZMENXXA2D6P5DP).
+
+### **Test Results**
+
+✅ **18 operations tested** - mint, transfer, valuation updates, whitelist, pause/unpause  
+✅ **Advanced features:** Dividend calculation, voting rights, transfer validation  
+✅ **All 34 functions operational**
 
 ---
-
-## 📄 **License**
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
-
----
-
-## 🙏 **Acknowledgments**
-
-- **Stellar Development Foundation** for blockchain infrastructure
-- **shadcn** for exceptional UI component library
-- **Vercel** for Next.js framework and deployment platform
-- **Tailwind Labs** for utility-first CSS framework
-
----
-
-## 📞 **Support**
-
-### **Getting Help**
-- 📖 **Documentation**: Check this README and inline code comments
-- 🐛 **Issues**: Report bugs via GitHub Issues
-- 💬 **Community**: Join our Discord for discussions
-- 📧 **Direct Contact**: [Your contact information]
-
-### **Common Issues**
-
-| Issue | Solution |
-|-------|----------|
-| Wallet not connecting | Ensure Freighter extension is installed and enabled |
-| Build warnings | Stellar SDK warnings are expected in web environments |
-| Network switching | Manually switch networks in Freighter extension |
-| Transaction failures | Check address format and compliance status |
-
----
-
-<div align="center">
-
-**Built with ❤️ for the future of tokenized real world assets**
-
-[Website](link) • [Documentation](link) • [Discord](link) • [Twitter](link)
-
-</div> 

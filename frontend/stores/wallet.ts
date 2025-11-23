@@ -82,18 +82,18 @@ export const useWalletStore = create<WalletStore>((set, get) => ({
 
       const mappedNetwork = networkMapping[networkResult.network] || 'testnet';
 
-      // Mock XLM balance - in production, you'd fetch this from Horizon
-      const mockBalance = '100.0000000';
-
       set({
         isConnected: true,
         address: accessResult.address,
-        publicKey: accessResult.address, // In Stellar, address and public key are the same
-        balance: mockBalance,
+        publicKey: accessResult.address,
+        balance: '0', // Will be fetched by refreshBalance
         network: mappedNetwork,
         isLoading: false,
         error: null
       });
+
+      // Fetch real balance from Horizon
+      await get().refreshBalance();
 
       // Start watching for wallet changes
       get().startWalletWatcher();
@@ -175,24 +175,42 @@ export const useWalletStore = create<WalletStore>((set, get) => ({
 
   // Refresh XLM balance
   refreshBalance: async () => {
-    const { address, isConnected } = get();
+    const { address, isConnected, network } = get();
     
     if (!isConnected || !address) {
       return;
     }
 
     try {
-      console.log(`Refreshing balance for ${address}...`);
+      console.log(`Refreshing balance for ${address} on ${network}...`);
       
-      // In production, you would fetch the actual balance from Horizon
-      // For now, we'll use a mock balance
-      const mockBalance = '100.0000000';
-      set({ balance: mockBalance });
+      // Dynamically import Stellar SDK
+      const StellarSdk = await import('@stellar/stellar-sdk');
       
-      console.log('Balance refreshed');
+      // Create Horizon server instance
+      const server = new StellarSdk.Horizon.Server(
+        network === 'testnet' 
+          ? 'https://horizon-testnet.stellar.org'
+          : 'https://horizon.stellar.org'
+      );
+
+      // Load account from Horizon
+      const account = await server.loadAccount(address);
+      
+      // Find XLM balance
+      const xlmBalance = account.balances.find(
+        (balance: any) => balance.asset_type === 'native'
+      );
+      
+      const balance = xlmBalance ? xlmBalance.balance : '0';
+      
+      set({ balance });
+      
+      console.log('Balance refreshed:', balance, 'XLM');
     } catch (error) {
       console.error('Failed to refresh balance:', error);
       // Don't set error state for balance refresh failures
+      // Keep the old balance value
     }
   },
 

@@ -1,9 +1,9 @@
 [package]
-name = "rwa-temp"
+name = "voltstellar"
 version = "0.1.0"
 edition = "2021"
 license = "MIT"
-description = "Real World Asset contract for Stellar Soroban"
+description = "Electric vehicle charging network for Stellar Soroban"
 
 [lib]
 crate-type = ["cdylib"]
